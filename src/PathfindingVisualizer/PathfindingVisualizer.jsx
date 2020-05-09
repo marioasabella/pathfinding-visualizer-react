@@ -1,48 +1,61 @@
-import React, {Component} from 'react';
-import Node from './Node/Node';
+import React, { Component } from "react";
+import Node from "./Node/Node";
 
-import './PathfindingVisualizer.css'
+import "./PathfindingVisualizer.css";
 
 export default class PathfindingVisualizer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            nodes: [],
+  constructor(props) {
+    super(props);
+    this.state = {
+      grid: [],
+    };
+  }
+
+  componentDidMount() {
+    const grid = [];
+    for (let row = 0; row < 20; row++) {
+      const currentRow = [];
+      for (let col = 0; col < 50; col++) {
+        const currentNode = {
+          row,
+          col,
+          isStart: row === 10 && col === 5,
+          isFinish: row === 10 && col === 45,
         };
+        currentRow.push(currentNode);
+      }
+      grid.push(currentRow);
     }
+    this.setState({ grid });
+  }
 
-    componentDidMount() {
-        const nodes = [];
-        for(let row = 0;  row < 20; row++) {
-            const currentRow = [];
-            for(let col = 0; col < 50; col++) {
-                const currentNode = {
-                    row,
-                    col
-                }
-                currentRow.push(currentNode);
-            }
-            nodes.push(currentRow);
-        }
-        this.setState({nodes}); 
-    }
+  visualiseDijkstra() {
+      const {grid} = this.state;
+  }
 
-    render() {
-        const {nodes} = this.state;
-        console.log(nodes);
+  render() {
+    const { grid } = this.state;
+    console.log(grid);
 
-        return (
-            <div className="grid">
-                {nodes.map((row, rowIdx) => {
-                    return <div key={rowIdx}>
-                        {row.map((node, nodeIdx) => {
-                            return <Node 
-                                        key={nodeIdx} 
-                                        isStart={true}></Node>
-                        })}
-                        </div>
-                })}
+    return (
+      <div className="grid">
+        {grid.map((row, rowIdx) => {
+          return (
+            <div key={rowIdx}>
+              {row.map((node, nodeIdx) => {
+                const { isStart, isFinish } = node;
+                return (
+                  <Node
+                    key={nodeIdx}
+                    isStart={isStart}
+                    isFinish={isFinish}
+                  ></Node>
+                );
+              })}
             </div>
-        );
-    }
+          );
+        })}
+      </div>
+    );
+  }
 }
