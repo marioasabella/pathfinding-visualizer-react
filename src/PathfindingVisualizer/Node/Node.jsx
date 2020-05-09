@@ -12,5 +12,12 @@ export default class Node extends Component {
     render() {
         return <div className="node"></div>
     }
+    
 
+}
+
+export const DEFAULT_NODE = {
+    row: 0,
+    col: 0,
+    
 }

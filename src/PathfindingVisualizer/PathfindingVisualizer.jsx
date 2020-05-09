@@ -13,10 +13,14 @@ export default class PathfindingVisualizer extends Component {
 
     componentDidMount() {
         const nodes = [];
-        for(let row = 0;  row < 15; row++) {
+        for(let row = 0;  row < 20; row++) {
             const currentRow = [];
             for(let col = 0; col < 50; col++) {
-                currentRow.push([]);
+                const currentNode = {
+                    row,
+                    col
+                }
+                currentRow.push(currentNode);
             }
             nodes.push(currentRow);
         }
@@ -25,10 +29,19 @@ export default class PathfindingVisualizer extends Component {
 
     render() {
         const {nodes} = this.state;
+        console.log(nodes);
+
         return (
-            <div>
-                Foo
-                <Node></Node>
+            <div className="grid">
+                {nodes.map((row, rowIdx) => {
+                    return <div key={rowIdx}>
+                        {row.map((node, nodeIdx) => {
+                            return <Node 
+                                        key={nodeIdx} 
+                                        isStart={true}></Node>
+                        })}
+                        </div>
+                })}
             </div>
         );
     }
