@@ -36,7 +36,7 @@ export default class PathfindingVisualizer extends Component {
   }
 
   handleMouseUp() {
-    this.setState({ grid: newGrid });
+    this.setState({ mouseIsPressed: false });
   }
 
   animateDijsktra(visitedNodesInOrder, nodesInShortestPathOrder) {}
