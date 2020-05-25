@@ -39,12 +39,12 @@
   }
   100% {
     transform: scale(1);
-    background-color: green;
+    background-color: greenyellow;
   }
 }
 
 .node-wall {
-  background-color: blueviolet;
+  background-color: lightgray;
 }
 
 .node-shortest-path {
