@@ -7,8 +7,8 @@ import "./PathfindingVisualizer.css";
 
 const START_NODE_ROW = 9;
 const START_NODE_COL = 9;
-const FINISH_NODE_ROW = 19;
-const FINISH_NODE_COL = 49;
+const FINISH_NODE_ROW = 9;
+const FINISH_NODE_COL = 39;
 
 export default class PathfindingVisualizer extends Component {
   constructor(props) {
@@ -82,6 +82,7 @@ export default class PathfindingVisualizer extends Component {
         <button onClick={() => this.visualiseDijkstra()}>
           Visualize Dijkstra's Algorithm
         </button>
+        <p>Drag mouse to draw a wall!</p>
         <div className="grid">
           {grid.map((row, rowIdx) => {
             return (
